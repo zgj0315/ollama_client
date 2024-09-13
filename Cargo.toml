@@ -3,6 +3,14 @@ edition = "2021"
 name = "ollama_client"
 version = "0.1.0"
 
+[[bin]]
+name = "generate"
+path = "src/generate.rs"
+
+[[bin]]
+name = "chat"
+path = "src/chat.rs"
+
 [dependencies]
 anyhow = "1.0"
 log = "0.4"
