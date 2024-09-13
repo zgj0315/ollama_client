@@ -3,28 +3,15 @@ async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt().with_line_number(true).init();
     let client = reqwest::ClientBuilder::new().build()?;
     let url = "http://127.0.0.1:11434/api/chat";
-    // let req_body = serde_json::json!({
-    //   "model": "llama3.1",
-    //   "messages": [
-    //     {
-    //       "role": "user",
-    //       "content": "why is the sky blue?"
-    //     }
-    //   ],
-    //   "stream": false
-    // });
     let req_body = serde_json::json!({
-      // "model": "llama3.1",
       "model": "gemma2:27b",
       "messages": [
         {
           "role": "system",
-          // "content": "你是一个专业的漏洞研究工程师，你是一个专业的计算机安全工程师，你是一个专业的中英文翻译工程师，你将会把输入的内容翻译成中文"
           "content": "你是一个专业的漏洞研究专家、计算机安全专家、中英文翻译专家；
           根据输入内容进行分析，给出分析思路和过程，并输出中英文漏洞标题；
           标题中包含CVE信息；
           输出内容格式：**分析思路**\nxxx\n**分析过程**\nxxx\n**中文标题**\nxxx\n**英文标题**\nxxx\n"
-          // "content": "You are a professional vulnerability research engineer, you are a professional computer security engineer, you are a professional Chinese-English translation engineer, you will translate the input into Chinese"
         },
         {
           "role": "user",
